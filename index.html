@@ -2,49 +2,34 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Planificador Semanal de Menús</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link id="theme-style" rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
     <h1>Planificador Semanal de Menús</h1>
   </header>
   <main>
-    <!-- ===== 1. GESTIÓN DE CATEGORÍAS ===== -->
+    <!-- ===== 1. CATEGORÍAS PREESTABLECIDAS ===== -->
     <section id="seccion-categorias" class="card">
       <h2>Categorías de Platos</h2>
       <form id="form-agregar-categoria" class="form-inline">
-        <input
-          type="text"
-          id="input-nueva-categoria"
-          placeholder="Nueva categoría..."
-          maxlength="20"
-          required
-        />
-        <button type="submit" class="btn">Añadir</button>
+        <input type="text" id="input-nueva-categoria" placeholder="Nueva categoría..." maxlength="20" required />
+        <button type="submit" class="btn-lleno">Añadir</button>
       </form>
       <ul id="lista-categorias" class="lista"></ul>
     </section>
 
-    <!-- ===== 2. GESTIÓN DE PLATOS ===== -->
+    <!-- ===== 2. PLATOS PREESTABLECIDOS y PERSONALIZADOS ===== -->
     <section id="seccion-platos" class="card">
-      <h2>Platos Personalizados</h2>
+      <h2>Platos</h2>
       <form id="form-agregar-plato" class="form-inline">
-        <input
-          type="text"
-          id="input-nombre-plato"
-          placeholder="Nombre del plato..."
-          maxlength="30"
-          required
-        />
+        <input type="text" id="input-nombre-plato" placeholder="Nombre del plato..." maxlength="30" required />
         <select id="select-categoria-plato" required>
           <option value="">— Elige categoría —</option>
         </select>
-        <button type="submit" class="btn">Añadir Plato</button>
+        <button type="submit" class="btn-lleno">Añadir Plato</button>
       </form>
       <ul id="lista-platos" class="lista"></ul>
     </section>
@@ -52,20 +37,14 @@
     <!-- ===== 3. PREFERENCIAS SEMANALES ===== -->
     <section id="seccion-preferencias" class="card">
       <h2>Preferencias Semanales</h2>
-      <form id="form-preferencias" class="grid-griddias">
-        <!-- Se inyectan 7 bloques (lunes a domingo) mediante JavaScript -->
-      </form>
-      <button id="btn-guardar-preferencias" class="btn-lleno">
-        Guardar Preferencias
-      </button>
+      <form id="form-preferencias" class="grid-griddias"></form>
+      <button id="btn-guardar-preferencias" class="btn-lleno">Guardar Preferencias</button>
     </section>
 
     <!-- ===== 4. GENERAR MENÚ SEMANAL ===== -->
     <section id="seccion-generar" class="card">
       <h2>Generar Menú Semanal</h2>
-      <button id="btn-generar-menu" class="btn-lleno">
-        Generar Menú Semanal
-      </button>
+      <button id="btn-generar-menu" class="btn-lleno">Generar Menú Semanal</button>
     </section>
 
     <!-- ===== 5. RESULTADO: PLAN SEMANAL ===== -->
@@ -80,6 +59,12 @@
         </thead>
         <tbody></tbody>
       </table>
+    </section>
+
+    <!-- ===== 6. RECETAS PREESTABLECIDAS ===== -->
+    <section id="seccion-recetas" class="card">
+      <h2>Recetas</h2>
+      <div id="lista-recetas" class="lista-recetas"></div>
     </section>
   </main>
 

@@ -1,290 +1,294 @@
+/* ================================
+   Tema oscuro / profesional
+   ================================ */
 
-   :root {
-    --bg-total: #1a1a1a;
-    --bg-card: #252525;
-    --text-claro: #ededed;
-    --text-sec: #a0a0a0;
-    --border-card: #333;
-    --accent: #3a7bfd;
-    --accent-hover: #285ecf;
-    --input-bg: #2d2d2d;
-    --input-border: #444;
-    --btn-bg: #3a7bfd;
-    --btn-bg-hover: #285ecf;
-    --btn-text: #ffffff;
-  }
-  
-  /* ================================
-     Reset y base
-     ================================ */
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  html,
-  body {
-    background-color: var(--bg-total);
-    color: var(--text-claro);
-    height: 100%;
-  }
-  
-  header {
-    text-align: center;
-    padding: 1rem 0;
-    background-color: var(--bg-card);
-    border-bottom: 1px solid var(--border-card);
-  }
-  
-  header h1 {
-    font-size: 2rem;
-  }
-  
-  main {
-    max-width: 700px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-  }
-  
-  /* ================================
-     Tarjetas secciones
-     ================================ */
-  .card {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-card);
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s ease;
-  }
-  
-  .card:hover {
-    transform: translateY(-2px);
-  }
-  
-  .card h2 {
-    margin-bottom: 1rem;
-    color: var(--accent);
-  }
-  
-  /* ================================
-     Formularios inline
-     ================================ */
-  .form-inline {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-  }
-  
-  .form-inline input,
-  .form-inline select {
-    background-color: var(--input-bg);
-    border: 1px solid var(--input-border);
-    border-radius: 4px;
-    color: var(--text-claro);
-    padding: 0.5rem;
-    flex: 1;
-    font-size: 1rem;
-  }
-  
-  .form-inline button {
-    background-color: var(--btn-bg);
-    border: none;
-    border-radius: 4px;
-    color: var(--btn-text);
-    padding: 0.6rem 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    font-size: 1rem;
-  }
-  
-  .form-inline button:hover {
-    background-color: var(--btn-bg-hover);
-  }
-  
-  /* ================================
-     Listas
-     ================================ */
-  .lista {
-    list-style: none;
-    margin-top: 1rem;
-  }
-  
-  .lista li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--input-bg);
-    border: 1px solid var(--input-border);
-    border-radius: 4px;
-    padding: 0.6rem 1rem;
-    margin-bottom: 0.5rem;
-    transition: background-color 0.2s ease;
-  }
-  
-  .lista li:hover {
-    background-color: var(--accent-hover);
-  }
-  
-  .lista li .texto-muted {
-    color: var(--text-sec);
-  }
-  
-  .lista li button {
-    background: none;
-    border: none;
-    color: #ff5c5c;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.2s ease;
-  }
-  
-  .lista li button:hover {
-    color: #ff1e1e;
-  }
-  
-  /* ================================
-     Grid para preferencias semanales
-     ================================ */
-  .grid-griddias {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 1rem;
-  }
-  
-  .grid-griddias .bloque-dia {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .grid-griddias .bloque-dia label {
-    margin-bottom: 0.3rem;
-    font-size: 0.9rem;
-    color: var(--text-sec);
-  }
-  
-  .grid-griddias .bloque-dia select {
-    background-color: var(--input-bg);
-    border: 1px solid var(--input-border);
-    border-radius: 4px;
-    color: var(--text-claro);
-    padding: 0.5rem;
-    font-size: 1rem;
-  }
-  
-  /* ================================
-     Botones llenos
-     ================================ */
-  .btn-lleno {
-    display: block;
-    margin-top: 1rem;
-    background-color: var(--btn-bg);
-    border: none;
-    border-radius: 4px;
-    color: var(--btn-text);
-    padding: 0.75rem 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    font-size: 1rem;
-    width: 100%;
-    text-align: center;
-  }
-  
-  .btn-lleno:hover {
-    background-color: var(--btn-bg-hover);
-  }
-  
-  /* ================================
-     Oculto
-     ================================ */
-  .oculto {
-    display: none;
-  }
-  
-  /* ================================
-     Tabla de menú semanal
-     ================================ */
-  #tabla-menu {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-  }
-  
+:root {
+  --bg-total: #1a1a1a;
+  --bg-card: #252525;
+  --text-claro: #ededed;
+  --text-sec: #a0a0a0;
+  --border-card: #333;
+  --accent: #3a7bfd;
+  --accent-hover: #285ecf;
+  --input-bg: #2d2d2d;
+  --input-border: #444;
+  --btn-bg: #3a7bfd;
+  --btn-bg-hover: #285ecf;
+  --btn-text: #ffffff;
+}
+
+/* ================================
+   Reset y base
+   ================================ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html,
+body {
+  background-color: var(--bg-total);
+  color: var(--text-claro);
+  height: 100%;
+}
+
+header {
+  text-align: center;
+  padding: 1rem 0;
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border-card);
+}
+
+header h1 {
+  font-size: 2rem;
+}
+
+main {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* ================================
+   Tarjetas secciones
+   ================================ */
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.card h2 {
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+
+/* ================================
+   Formularios inline
+   ================================ */
+.form-inline {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.form-inline input,
+.form-inline select {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  color: var(--text-claro);
+  padding: 0.5rem;
+  flex: 1;
+  font-size: 1rem;
+}
+
+.form-inline button {
+  background-color: var(--btn-bg);
+  border: none;
+  border-radius: 4px;
+  color: var(--btn-text);
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 1rem;
+}
+
+.form-inline button:hover {
+  background-color: var(--btn-bg-hover);
+}
+
+/* ================================
+   Listas
+   ================================ */
+.lista {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.lista li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  padding: 0.6rem 1rem;
+  margin-bottom: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.lista li:hover {
+  background-color: var(--accent-hover);
+}
+
+.lista li .texto-muted {
+  color: var(--text-sec);
+}
+
+.lista li button {
+  background: none;
+  border: none;
+  color: #ff5c5c;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.lista li button:hover {
+  color: #ff1e1e;
+}
+
+/* ================================
+   Grid para preferencias semanales
+   ================================ */
+.grid-griddias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.grid-griddias .bloque-dia {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-griddias .bloque-dia label {
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+  color: var(--text-sec);
+}
+
+.grid-griddias .bloque-dia select {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  color: var(--text-claro);
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+/* ================================
+   Botones llenos
+   ================================ */
+.btn-lleno {
+  display: block;
+  margin-top: 1rem;
+  background-color: var(--btn-bg);
+  border: none;
+  border-radius: 4px;
+  color: var(--btn-text);
+  padding: 0.75rem 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+.btn-lleno:hover {
+  background-color: var(--btn-bg-hover);
+}
+
+/* ================================
+   Oculto
+   ================================ */
+.oculto {
+  display: none;
+}
+
+/* ================================
+   Tabla de menú semanal
+   ================================ */
+#tabla-menu {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+#tabla-menu th,
+#tabla-menu td {
+  border: 1px solid var(--border-card);
+  padding: 0.6rem;
+  text-align: left;
+}
+
+#tabla-menu th {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+/* Responsive para tabla en móvil */
+@media (max-width: 600px) {
+  #tabla-menu,
+  #tabla-menu thead,
+  #tabla-menu tbody,
   #tabla-menu th,
+  #tabla-menu td,
+  #tabla-menu tr {
+    display: block;
+  }
+  #tabla-menu tr {
+    margin-bottom: 1rem;
+  }
   #tabla-menu td {
-    border: 1px solid var(--border-card);
-    padding: 0.6rem;
-    text-align: left;
+    padding-left: 50%;
+    position: relative;
   }
-  
-  #tabla-menu th {
-    background-color: var(--accent);
-    color: #fff;
-  }
-  
-  /* Responsive para tabla en móvil */
-  @media (max-width: 600px) {
-    #tabla-menu,
-    #tabla-menu thead,
-    #tabla-menu tbody,
-    #tabla-menu th,
-    #tabla-menu td,
-    #tabla-menu tr {
-      display: block;
-    }
-    #tabla-menu tr {
-      margin-bottom: 1rem;
-    }
-    #tabla-menu td {
-      padding-left: 50%;
-      position: relative;
-    }
-    #tabla-menu td::before {
-      content: attr(data-label);
-      position: absolute;
-      left: 0;
-      width: 45%;
-      padding-left: 0.5rem;
-      font-weight: bold;
-      color: var(--text-sec);
-    }
-  }
-  
-  /* ================================
-     Spinner (animación de carga)
-     ================================ */
-  .spinner {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 3rem;
-    height: 3rem;
-    margin: -1.5rem 0 0 -1.5rem;
-    border: 4px solid var(--input-border);
-    border-top: 4px solid var(--accent);
-    border-radius: 50%;
-    animation: giro 1s linear infinite;
-    z-index: 1000;
-  }
-  
-  @keyframes giro {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
-  /* ================================
-     Footer
-     ================================ */
-  footer {
-    text-align: center;
-    padding: 1rem 0;
+  #tabla-menu td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 45%;
+    padding-left: 0.5rem;
+    font-weight: bold;
     color: var(--text-sec);
   }
+}
+
+/* ================================
+   Spinner (animación de carga)
+   ================================ */
+.spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 3rem;
+  height: 3rem;
+  margin: -1.5rem 0 0 -1.5rem;
+  border: 4px solid var(--input-border);
+  border-top: 4px solid var(--accent);
+  border-radius: 50%;
+  animation: giro 1s linear infinite;
+  z-index: 1000;
+}
+
+@keyframes giro {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ================================
+   Footer
+   ================================ */
+footer {
+  text-align: center;
+  padding: 1rem 0;
+  color: var(--text-sec);
+}
+
   
