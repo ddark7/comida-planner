@@ -1,24 +1,22 @@
 /* ================================
-   Tema oscuro / profesional
+   Paleta inspirada en el logo ÑAM
    ================================ */
-
 :root {
-  --bg-total: #1a1a1a;
-  --bg-card: #252525;
-  --text-claro: #ededed;
-  --text-sec: #a0a0a0;
-  --border-card: #333;
-  --accent: #3a7bfd;
-  --accent-hover: #285ecf;
-  --input-bg: #2d2d2d;
-  --input-border: #444;
-  --btn-bg: #3a7bfd;
-  --btn-bg-hover: #285ecf;
-  --btn-text: #ffffff;
+  --bg-total: #fef6e4;         /* beige claro */
+  --bg-card: #fff3d9;         /* beige más saturado */
+  --text-principal: #5c3a1d;  /* marrón oscuro */
+  --text-sec: #a0522d;        /* marrón más suave */
+  --accent: #ffb347;          /* naranja suave */
+  --accent-hover: #ffa500;    /* naranja más fuerte */
+  --input-bg: #fff;           /* blanco */
+  --input-border: #e0c097;    /* beige grisáceo */
+  --btn-bg: #ffb347;
+  --btn-bg-hover: #ffa500;
+  --btn-text: #5c3a1d;
 }
 
 /* ================================
-   Reset y base
+   Base
    ================================ */
 * {
   box-sizing: border-box;
@@ -27,45 +25,58 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-html,
-body {
+html, body {
   background-color: var(--bg-total);
-  color: var(--text-claro);
-  height: 100%;
+  color: var(--text-principal);
+  min-height: 100%;
 }
 
+/* ================================
+   Header con logo
+   ================================ */
 header {
   text-align: center;
   padding: 1rem 0;
   background-color: var(--bg-card);
-  border-bottom: 1px solid var(--border-card);
+  border-bottom: 2px solid var(--input-border);
+}
+
+header .logo {
+  width: 80px;
+  height: auto;
+  display: block;
+  margin: 0 auto 0.5rem;
 }
 
 header h1 {
-  font-size: 2rem;
+  font-size: 1.8rem;
+  color: var(--text-principal);
 }
 
+/* ================================
+   Main
+   ================================ */
 main {
-  max-width: 700px;
+  max-width: 750px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
 
 /* ================================
-   Tarjetas secciones
+   Cards
    ================================ */
 .card {
   background-color: var(--bg-card);
-  border: 1px solid var(--border-card);
-  border-radius: 8px;
+  border: 1px solid var(--input-border);
+  border-radius: 12px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 10px rgba(92, 58, 29, 0.1);
   transition: transform 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
 }
 
 .card h2 {
@@ -74,7 +85,7 @@ main {
 }
 
 /* ================================
-   Formularios inline
+   Formularios
    ================================ */
 .form-inline {
   display: flex;
@@ -86,8 +97,8 @@ main {
 .form-inline select {
   background-color: var(--input-bg);
   border: 1px solid var(--input-border);
-  border-radius: 4px;
-  color: var(--text-claro);
+  border-radius: 6px;
+  color: var(--text-principal);
   padding: 0.5rem;
   flex: 1;
   font-size: 1rem;
@@ -96,12 +107,12 @@ main {
 .form-inline button {
   background-color: var(--btn-bg);
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   color: var(--btn-text);
   padding: 0.6rem 1.2rem;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  font-size: 1rem;
+  font-weight: bold;
 }
 
 .form-inline button:hover {
@@ -122,14 +133,14 @@ main {
   align-items: center;
   background-color: var(--input-bg);
   border: 1px solid var(--input-border);
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 0.6rem 1rem;
   margin-bottom: 0.5rem;
-  transition: background-color 0.2s ease;
 }
 
 .lista li:hover {
-  background-color: var(--accent-hover);
+  background-color: var(--accent);
+  color: var(--btn-text);
 }
 
 .lista li .texto-muted {
@@ -139,28 +150,22 @@ main {
 .lista li button {
   background: none;
   border: none;
-  color: #ff5c5c;
+  color: #d9534f;
   font-weight: bold;
   cursor: pointer;
-  transition: color 0.2s ease;
 }
 
 .lista li button:hover {
-  color: #ff1e1e;
+  color: #c9302c;
 }
 
 /* ================================
-   Grid para preferencias semanales
+   Preferencias Grid
    ================================ */
 .grid-griddias {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 1rem;
-}
-
-.grid-griddias .bloque-dia {
-  display: flex;
-  flex-direction: column;
 }
 
 .grid-griddias .bloque-dia label {
@@ -172,28 +177,24 @@ main {
 .grid-griddias .bloque-dia select {
   background-color: var(--input-bg);
   border: 1px solid var(--input-border);
-  border-radius: 4px;
-  color: var(--text-claro);
+  border-radius: 6px;
   padding: 0.5rem;
-  font-size: 1rem;
 }
 
 /* ================================
-   Botones llenos
+   Botón lleno
    ================================ */
 .btn-lleno {
-  display: block;
-  margin-top: 1rem;
   background-color: var(--btn-bg);
-  border: none;
-  border-radius: 4px;
   color: var(--btn-text);
+  border: none;
+  border-radius: 6px;
   padding: 0.75rem 1.2rem;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  font-size: 1rem;
   width: 100%;
-  text-align: center;
+  margin-top: 1rem;
+  font-weight: bold;
 }
 
 .btn-lleno:hover {
@@ -201,14 +202,7 @@ main {
 }
 
 /* ================================
-   Oculto
-   ================================ */
-.oculto {
-  display: none;
-}
-
-/* ================================
-   Tabla de menú semanal
+   Tabla menú semanal
    ================================ */
 #tabla-menu {
   width: 100%;
@@ -218,7 +212,7 @@ main {
 
 #tabla-menu th,
 #tabla-menu td {
-  border: 1px solid var(--border-card);
+  border: 1px solid var(--input-border);
   padding: 0.6rem;
   text-align: left;
 }
@@ -228,19 +222,12 @@ main {
   color: #fff;
 }
 
-/* Responsive para tabla en móvil */
+/* Responsive móvil tabla */
 @media (max-width: 600px) {
-  #tabla-menu,
-  #tabla-menu thead,
-  #tabla-menu tbody,
-  #tabla-menu th,
-  #tabla-menu td,
-  #tabla-menu tr {
+  #tabla-menu, #tabla-menu thead, #tabla-menu tbody, #tabla-menu th, #tabla-menu td, #tabla-menu tr {
     display: block;
   }
-  #tabla-menu tr {
-    margin-bottom: 1rem;
-  }
+  #tabla-menu tr { margin-bottom: 1rem; }
   #tabla-menu td {
     padding-left: 50%;
     position: relative;
@@ -257,38 +244,11 @@ main {
 }
 
 /* ================================
-   Spinner (animación de carga)
-   ================================ */
-.spinner {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 3rem;
-  height: 3rem;
-  margin: -1.5rem 0 0 -1.5rem;
-  border: 4px solid var(--input-border);
-  border-top: 4px solid var(--accent);
-  border-radius: 50%;
-  animation: giro 1s linear infinite;
-  z-index: 1000;
-}
-
-@keyframes giro {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* ================================
    Footer
    ================================ */
 footer {
   text-align: center;
   padding: 1rem 0;
   color: var(--text-sec);
+  font-size: 0.9rem;
 }
-
-  

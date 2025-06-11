@@ -8,10 +8,12 @@
 </head>
 <body>
   <header>
+    <img src="logo.png" alt="Logo ÑAM" class="logo">
     <h1>Planificador Semanal de Menús</h1>
   </header>
+  
   <main>
-    <!-- ===== 1. CATEGORÍAS PREESTABLECIDAS ===== -->
+    <!-- 1. CATEGORÍAS -->
     <section id="seccion-categorias" class="card">
       <h2>Categorías de Platos</h2>
       <form id="form-agregar-categoria" class="form-inline">
@@ -21,7 +23,7 @@
       <ul id="lista-categorias" class="lista"></ul>
     </section>
 
-    <!-- ===== 2. PLATOS PREESTABLECIDOS y PERSONALIZADOS ===== -->
+    <!-- 2. PLATOS -->
     <section id="seccion-platos" class="card">
       <h2>Platos</h2>
       <form id="form-agregar-plato" class="form-inline">
@@ -34,20 +36,20 @@
       <ul id="lista-platos" class="lista"></ul>
     </section>
 
-    <!-- ===== 3. PREFERENCIAS SEMANALES ===== -->
+    <!-- 3. PREFERENCIAS -->
     <section id="seccion-preferencias" class="card">
       <h2>Preferencias Semanales</h2>
       <form id="form-preferencias" class="grid-griddias"></form>
       <button id="btn-guardar-preferencias" class="btn-lleno">Guardar Preferencias</button>
     </section>
 
-    <!-- ===== 4. GENERAR MENÚ SEMANAL ===== -->
+    <!-- 4. GENERAR MENÚ -->
     <section id="seccion-generar" class="card">
       <h2>Generar Menú Semanal</h2>
       <button id="btn-generar-menu" class="btn-lleno">Generar Menú Semanal</button>
     </section>
 
-    <!-- ===== 5. RESULTADO: PLAN SEMANAL ===== -->
+    <!-- 5. RESULTADO -->
     <section id="seccion-resultado" class="card oculto">
       <h2>Menú Semanal</h2>
       <table id="tabla-menu">
@@ -61,23 +63,24 @@
       </table>
     </section>
 
-    <!-- ===== 6. RECETAS PREESTABLECIDAS ===== -->
+    <!-- 6. RECETAS -->
     <section id="seccion-recetas" class="card">
       <h2>Recetas</h2>
       <div id="lista-recetas" class="lista-recetas"></div>
     </section>
-    <!-- ===== 7. HISTORIAL DE MENÚS ===== -->
-  <section id="seccion-historial" class="card oculto">
-    <h2>Historial de Menús</h2>
-    <div id="historial-menus"></div>
-  </section>
-</main>
 
+    <!-- 7. HISTORIAL -->
+    <section id="seccion-historial" class="card oculto">
+      <h2>Historial de Menús</h2>
+      <div id="historial-menus"></div>
+    </section>
+  </main>
 
   <footer>
-    <small>© 2025 Planificador Semanal de Menús. Uso personal.</small>
+    <small>© 2025 Planificador Semanal ÑAM. Uso personal.</small>
   </footer>
 
   <script src="script.js"></script>
 </body>
 </html>
+
