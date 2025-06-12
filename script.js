@@ -4,144 +4,50 @@
 const LS_CAT_KEY    = "categorias_platos";
 const LS_PLATOS_KEY = "platos";
 const LS_PREF_KEY   = "preferencias_semanales";
-const LS_HIST_KEY   = "historial_menus";  // para guardar el historial
+const LS_HIST_KEY   = "historial_menus";
+const LS_REC_KEY    = "recetas";
 
 // ===== 2) Valores preestablecidos =====
-const CATEGORIAS_PRE = ["legumbres", "pasta", "verduras", "patatas", "arroz"];
+const CATEGORIAS_PRE = ["Legumbres","Pasta","Verduras","Patatas","Arroz","Carne","Pescado","Huevos","Sopas"];
 const PLATOS_PRE = [
-  { nombre: "Ensalada de garbanzos", tipo: "legumbres" },
-  { nombre: "Judías con bacalao", tipo: "legumbres" },
-  { nombre: "Macarrones a la boloñesa", tipo: "pasta" },
-  { nombre: "Espaguetis a la carbonara", tipo: "pasta" },
-  { nombre: "Judías verdes guisadas", tipo: "verduras" },
-  { nombre: "Patatas con pavo", tipo: "patatas" },
-  { nombre: "Patatas con cabeza de costilla", tipo: "patatas" },
-  { nombre: "Arroz a la cubana", tipo: "arroz" },
-  { nombre: "Arroz blanco", tipo: "arroz" },
-  { nombre: "Paella", tipo: "arroz" }
+  { nombre: "Ensalada de garbanzos", tipo: "Legumbres" },
+  { nombre: "Judías con bacalao", tipo: "Legumbres" },
+  { nombre: "Macarrones a la boloñesa", tipo: "Pasta" },
+  { nombre: "Espaguetis a la carbonara", tipo: "Pasta" },
+  { nombre: "Judías verdes guisadas", tipo: "Verduras" },
+  { nombre: "Patatas con pavo", tipo: "Patatas" },
+  { nombre: "Patatas con cabeza de costilla", tipo: "Patatas" },
+  { nombre: "Arroz a la cubana", tipo: "Arroz" },
+  { nombre: "Arroz blanco", tipo: "Arroz" },
+  { nombre: "Paella", tipo: "Arroz" },
+  { nombre: "Pollo a la plancha", tipo: "Carne" },
+  { nombre: "Salmón al horno", tipo: "Pescado" },
+  { nombre: "Tortilla de patatas", tipo: "Huevos" },
+  { nombre: "Sopa de verduras", tipo: "Sopas" }
 ];
-
-// Recetas con ingredientes y pasos
 const RECETAS_PRE = [
   {
     nombre: "Ensalada de garbanzos",
-    ingredientes: ["Garbanzos cocidos", "Tomate", "Pepino", "Cebolla", "Aceite de oliva", "Sal", "Pimienta"],
+    ingredientes: ["Garbanzos cocidos","Tomate","Pepino","Cebolla","Aceite de oliva","Sal","Pimienta"],
     pasos: [
       "Escurre y enjuaga los garbanzos cocidos.",
       "Corta tomate, pepino y cebolla en cubos pequeños.",
-      "En un bol grande, mezcla los garbanzos con las verduras.",
-      "Añade aceite de oliva, sal y pimienta al gusto, y mezcla bien.",
-      "Sirve fría o a temperatura ambiente."
-    ]
-  },
-  {
-    nombre: "Judías con bacalao",
-    ingredientes: ["Judías blancas", "Bacalao desalado", "Ajo", "Pimentón dulce", "Aceite de oliva", "Sal"],
-    pasos: [
-      "Escurre las judías blancas cocidas.",
-      "En una sartén, sofríe ajo picado en aceite hasta que esté dorado.",
-      "Añade bacalao desmigado y cocínalo un par de minutos.",
-      "Espolvorea pimentón dulce y mezcla rápido para que no se queme.",
-      "Incorpora las judías blancas y calienta todo junto unos minutos.",
-      "Ajusta de sal si es necesario y sirve caliente."
+      "En un bol, mezcla garbanzos y verduras.",
+      "Añade aceite, sal y pimienta al gusto.",
+      "Sirve fría."
     ]
   },
   {
     nombre: "Macarrones a la boloñesa",
-    ingredientes: ["Macarrones", "Carne picada", "Tomate triturado", "Cebolla", "Ajo", "Aceite de oliva", "Sal", "Pimienta"],
+    ingredientes: ["Macarrones","Carne picada","Tomate triturado","Cebolla","Aceite","Sal","Pimienta"],
     pasos: [
-      "Cuece los macarrones en agua con sal según indicaciones del paquete.",
-      "En una sartén con aceite, sofríe cebolla y ajo picados hasta que estén dorados.",
-      "Añade la carne picada y cocina hasta que cambie de color.",
-      "Vierte el tomate triturado, sal y pimienta, y deja cocer a fuego medio 15 minutos.",
-      "Escurre los macarrones y mézclalos con la salsa boloñesa.",
-      "Sirve caliente y, si quieres, espolvorea queso rallado."
-    ]
-  },
-  {
-    nombre: "Espaguetis a la carbonara",
-    ingredientes: ["Espaguetis", "Bacon", "Huevos", "Queso parmesano rallado", "Aceite de oliva", "Sal", "Pimienta"],
-    pasos: [
-      "Cuece los espaguetis en agua con sal hasta que estén al dente.",
-      "En una sartén, dora el bacon cortado en tiras con un poco de aceite.",
-      "En un bol, bate los huevos con el queso parmesano y una pizca de pimienta.",
-      "Escurre los espaguetis y resérvalos.",
-      "Apaga el fuego del bacon, añade los espaguetis a la sartén y mezcla rápido.",
-      "Vierte la mezcla de huevo y queso, removiendo fuera del fuego para que no se cuajen demasiado.",
-      "Sirve al momento con más queso y pimienta si lo deseas."
-    ]
-  },
-  {
-    nombre: "Judías verdes guisadas",
-    ingredientes: ["Judías verdes frescas", "Ajo", "Tomate", "Zanahoria", "Aceite de oliva", "Sal", "Pimienta"],
-    pasos: [
-      "Lava y corta las judías verdes en trozos de unos 4 cm.",
-      "Corta zanahoria en rodajas finas.",
-      "Sofríe ajo picado en aceite hasta que esté dorado.",
-      "Añade tomate rallado y deja cocinar unos minutos.",
-      "Incorpora las judías y la zanahoria, cubre con agua, sal y pimienta.",
-      "Cuece a fuego medio 20-25 minutos hasta que las judías estén tiernas.",
-      "Sirve caliente."
-    ]
-  },
-  {
-    nombre: "Patatas con pavo",
-    ingredientes: ["Patatas", "Filetes de pavo", "Cebolla", "Ajo", "Aceite de oliva", "Sal", "Pimienta"],
-    pasos: [
-      "Pela y corta las patatas en cubos medianos.",
-      "En una sartén, dora ajo y cebolla picados en aceite.",
-      "Añade las patatas y sofríe unos minutos.",
-      "Agrega agua hasta cubrir y salpimienta. Cuece 15-20 minutos hasta que estén tiernas.",
-      "En otra sartén, cocina los filetes de pavo a la plancha con un poco de sal y pimienta.",
-      "Sirve las patatas acompañadas del pavo."
-    ]
-  },
-  {
-    nombre: "Patatas con cabeza de costilla",
-    ingredientes: ["Patatas", "Cabeza de costilla (trozos)", "Cebolla", "Ajo", "Pimentón dulce", "Aceite de oliva", "Sal", "Pimienta"],
-    pasos: [
-      "Pela y corta las patatas en trozos medianos.",
-      "En una olla, sofríe ajo y cebolla picados en aceite.",
-      "Añade la cabeza de costilla y dora ligeramente.",
-      "Incorpora las patatas, el pimentón y mezcla bien.",
-      "Cubre con agua o caldo, sazona y cuece a fuego medio 30 minutos.",
-      "Sirve caliente."
-    ]
-  },
-  {
-    nombre: "Arroz a la cubana",
-    ingredientes: ["Arroz", "Plátano", "Tomate triturado", "Ajo", "Aceite de oliva", "Sal", "Pimienta"],
-    pasos: [
-      "Cuece el arroz en agua con sal y escurre.",
-      "Fríe el plátano en rodajas con un poco de aceite hasta que esté dorado.",
-      "En otra sartén, sofríe ajo picado en aceite y añade tomate triturado, sal y pimienta. Cocina 10 minutos.",
-      "Sirve el arroz con el tomate frito y el plátano por encima."
-    ]
-  },
-  {
-    nombre: "Arroz blanco",
-    ingredientes: ["Arroz", "Agua", "Aceite de oliva", "Sal"],
-    pasos: [
-      "Mide una taza de arroz y dos de agua.",
-      "En una olla con aceite caliente, sofríe brevemente el arroz.",
-      "Añade el agua y sal al gusto. Lleva a ebullición.",
-      "Baja el fuego, tapa y cocina 12-15 minutos hasta que el agua se absorba.",
-      "Apaga y deja reposar 5 minutos antes de servir."
-    ]
-  },
-  {
-    nombre: "Paella",
-    ingredientes: ["Arroz bomba", "Azafrán", "Caldo", "Mariscos", "Pollo", "Pimiento rojo", "Ajo", "Aceite de oliva", "Sal", "Pimienta"],
-    pasos: [
-      "En una paellera con aceite, dora trozos de pollo y reserva.",
-      "Sofríe ajo picado y tira de pimiento en tiras.",
-      "Añade arroz y remueve para que se impregne de aceite.",
-      "Vierte caldo caliente con azafrán, sal y pimienta.",
-      "Coloca el pollo, mariscos y pimiento en la superficie.",
-      "Cocina sin remover a fuego medio 18-20 minutos hasta que el arroz esté tierno.",
-      "Deja reposar 5 minutos antes de servir."
+      "Cuece los macarrones según indicaciones.",
+      "Sofríe cebolla y ajo, añade carne hasta dorar.",
+      "Incorpora tomate y condimenta, cocina 15 min.",
+      "Mezcla con los macarrones y sirve."  
     ]
   }
+  // ... añada más recetas si desea
 ];
 
 // ===== 3) Datos en memoria =====
@@ -149,477 +55,210 @@ let categorias = [];
 let platos = [];
 let preferencias = {};
 let historial = [];
+let recetas = [];
 
-// ===== 4) Al cargar la página =====
+// ===== 4) Inicio =====
 document.addEventListener("DOMContentLoaded", () => {
-  inicializarDatos();
-  configurarModo();
+  initData();
+  applyTheme();
+  renderAll();
 
-  renderizarCategorias();
-  renderizarListaPlatos();
-  renderizarFormularioPreferencias();
-  renderizarRecetas();
-  renderizarHistorial();
-
-  document
-    .getElementById("form-agregar-categoria")
-    .addEventListener("submit", manejarAgregarCategoria);
-
-  document
-    .getElementById("form-agregar-plato")
-    .addEventListener("submit", manejarAgregarPlato);
-
-  document
-    .getElementById("btn-guardar-preferencias")
-    .addEventListener("click", manejarGuardarPreferencias);
-
-  document
-    .getElementById("btn-generar-menu")
-    .addEventListener("click", manejarGenerarMenu);
-
-  document
-    .getElementById("btn-toggle-tema")
-    .addEventListener("click", toggleModoOscuro);
+  document.getElementById("form-agregar-categoria").addEventListener("submit", addCategoria);
+  document.getElementById("form-agregar-plato").addEventListener("submit", addPlato);
+  document.getElementById("btn-guardar-preferencias").addEventListener("click", savePreferencias);
+  document.getElementById("btn-generar-menu").addEventListener("click", generateMenu);
+  document.getElementById("btn-toggle-tema").addEventListener("click", toggleTheme);
 });
 
 // ================================
-//  FUNCIONES DE INICIALIZACIÓN
+// Inicialización y guardado
 // ================================
-function inicializarDatos() {
-  // Categorías
-  const dataCat = localStorage.getItem(LS_CAT_KEY);
-  if (dataCat) {
-    categorias = JSON.parse(dataCat);
-  } else {
-    categorias = [...CATEGORIAS_PRE];
-    localStorage.setItem(LS_CAT_KEY, JSON.stringify(categorias));
-  }
-
-  // Platos
-  const dataPl = localStorage.getItem(LS_PLATOS_KEY);
-  if (dataPl) {
-    platos = JSON.parse(dataPl);
-  } else {
-    platos = [...PLATOS_PRE];
-    localStorage.setItem(LS_PLATOS_KEY, JSON.stringify(platos));
-  }
-
-  // Preferencias
-  const dataPref = localStorage.getItem(LS_PREF_KEY);
-  preferencias = dataPref
-    ? JSON.parse(dataPref)
-    : {
-        lunes: "",
-        martes: "",
-        miércoles: "",
-        jueves: "",
-        viernes: "",
-        sábado: "",
-        domingo: ""
-      };
-
-  // Historial de menús
-  const dataHist = localStorage.getItem(LS_HIST_KEY);
-  historial = dataHist ? JSON.parse(dataHist) : [];
+function initData() {
+  categorias = JSON.parse(localStorage.getItem(LS_CAT_KEY)) || [...CATEGORIAS_PRE];
+  platos = JSON.parse(localStorage.getItem(LS_PLATOS_KEY)) || [...PLATOS_PRE];
+  preferencias = JSON.parse(localStorage.getItem(LS_PREF_KEY)) || {};
+  historial = JSON.parse(localStorage.getItem(LS_HIST_KEY)) || [];
+  recetas = JSON.parse(localStorage.getItem(LS_REC_KEY)) || [...RECETAS_PRE];
+  saveData();
 }
 
-// ================================
-//   FUNCIONES DE CATEGORÍAS
-// ================================
-function guardarCategorias() {
+function saveData() {
   localStorage.setItem(LS_CAT_KEY, JSON.stringify(categorias));
-}
-
-function renderizarCategorias() {
-  const ul = document.getElementById("lista-categorias");
-  ul.innerHTML = "";
-
-  const selectCatPlato = document.getElementById("select-categoria-plato");
-  selectCatPlato.innerHTML = `<option value="">— Elige categoría —</option>`;
-
-  categorias.forEach((cat, idx) => {
-    const li = document.createElement("li");
-    li.innerHTML = `
-      <span>${capitalize(cat)}</span>
-      <button class="btn-eliminar-cat" data-index="${idx}">❌</button>
-    `;
-    ul.appendChild(li);
-  });
-
-  document.querySelectorAll(".btn-eliminar-cat").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      const index = Number(e.currentTarget.getAttribute("data-index"));
-      const nombreAEliminar = categorias[index];
-      categorias.splice(index, 1);
-      guardarCategorias();
-      platos = platos.filter((p) => p.tipo !== nombreAEliminar);
-      guardarPlatos();
-      renderizarCategorias();
-      renderizarListaPlatos();
-    });
-  });
-
-  categorias.forEach((cat) => {
-    const option = document.createElement("option");
-    option.value = cat;
-    option.textContent = capitalize(cat);
-    selectCatPlato.appendChild(option);
-  });
-}
-
-function manejarAgregarCategoria(e) {
-  e.preventDefault();
-  const input = document.getElementById("input-nueva-categoria");
-  const nombreCat = input.value.trim().toLowerCase();
-  if (!nombreCat) return;
-  if (categorias.includes(nombreCat)) {
-    alert("Esa categoría ya existe.");
-    return;
-  }
-  categorias.push(nombreCat);
-  guardarCategorias();
-  renderizarCategorias();
-  input.value = "";
-}
-
-// ================================
-//     FUNCIONES DE PLATOS
-// ================================
-function guardarPlatos() {
   localStorage.setItem(LS_PLATOS_KEY, JSON.stringify(platos));
-}
-
-function manejarAgregarPlato(e) {
-  e.preventDefault();
-  const nombreInput = document.getElementById("input-nombre-plato");
-  const tipoSelect = document.getElementById("select-categoria-plato");
-  const nombre = nombreInput.value.trim();
-  const tipo = tipoSelect.value;
-
-  if (!nombre || !tipo) {
-    alert("Rellena el nombre y elige categoría.");
-    return;
-  }
-
-  platos.push({ nombre, tipo });
-  guardarPlatos();
-
-  nombreInput.value = "";
-  tipoSelect.selectedIndex = 0;
-  renderizarListaPlatos();
-}
-
-function renderizarListaPlatos() {
-  const ul = document.getElementById("lista-platos");
-  ul.innerHTML = "";
-
-  if (platos.length === 0) {
-    const li = document.createElement("li");
-    li.textContent = "No hay platos guardados.";
-    li.classList.add("texto-muted");
-    ul.appendChild(li);
-    return;
-  }
-
-  platos.forEach((p, idx) => {
-    const li = document.createElement("li");
-    li.innerHTML = `
-      <span>${capitalize(p.nombre)} (<em>${capitalize(p.tipo)}</em>)</span>
-      <button class="btn-eliminar-plato" data-index="${idx}">❌</button>
-    `;
-    ul.appendChild(li);
-  });
-
-  document.querySelectorAll(".btn-eliminar-plato").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      const index = Number(e.currentTarget.getAttribute("data-index"));
-      platos.splice(index, 1);
-      guardarPlatos();
-      renderizarListaPlatos();
-    });
-  });
-}
-
-// ================================
-//  FUNCIONES DE PREFERENCIAS SEMANALES
-// ================================
-function guardarPreferencias() {
   localStorage.setItem(LS_PREF_KEY, JSON.stringify(preferencias));
-  alert("Preferencias semanales guardadas.");
-}
-
-function renderizarFormularioPreferencias() {
-  const form = document.getElementById("form-preferencias");
-  form.innerHTML = "";
-  const diasSemana = ["lunes","martes","miércoles","jueves","viernes","sábado","domingo"];
-
-  diasSemana.forEach(dia => {
-    const div = document.createElement("div");
-    div.classList.add("bloque-dia");
-    const label = document.createElement("label");
-    label.setAttribute("for", `select-${dia}`);
-    label.textContent = capitalize(dia);
-
-    const select = document.createElement("select");
-    select.id = `select-${dia}`;
-    select.name = dia;
-    select.innerHTML = `<option value="">— Elige categoría —</option>`;
-
-    categorias.forEach(cat => {
-      const option = document.createElement("option");
-      option.value = cat;
-      option.textContent = capitalize(cat);
-      if (preferencias[dia] === cat) {
-        option.selected = true;
-      }
-      select.appendChild(option);
-    });
-
-    div.appendChild(label);
-    div.appendChild(select);
-    form.appendChild(div);
-  });
-}
-
-function manejarGuardarPreferencias(e) {
-  e.preventDefault();
-  const diasSemana = ["lunes","martes","miércoles","jueves","viernes","sábado","domingo"];
-  for (const dia of diasSemana) {
-    const sel = document.getElementById(`select-${dia}`);
-    preferencias[dia] = sel.value;
-  }
-  guardarPreferencias();
-}
-
-// ================================
-//   FUNCIONES PARA GENERAR MENÚ
-// ================================
-function manejarGenerarMenu(e) {
-  e.preventDefault();
-  const spinner = document.getElementById("spinner");
-  if (spinner) spinner.classList.remove("oculto");
-
-  const diasSemana = ["lunes","martes","miércoles","jueves","viernes","sábado","domingo"];
-
-  // Leemos las preferencias en tiempo real
-  const prefsEnTiempoReal = {};
-  for (const dia of diasSemana) {
-    const select = document.getElementById(`select-${dia}`);
-    prefsEnTiempoReal[dia] = select.value;
-    if (!prefsEnTiempoReal[dia]) {
-      alert(`Asigna una categoría para el día: ${capitalize(dia)}.`);
-      if (spinner) spinner.classList.add("oculto");
-      return;
-    }
-  }
-
-  // Agrupar platos por tipo y barajar
-  const platosPorTipo = {};
-  categorias.forEach(cat => {
-    platosPorTipo[cat] = platos.filter(p => p.tipo === cat);
-    shuffleArray(platosPorTipo[cat]);
-  });
-
-  // Obtenemos el último menú para comparar
-  const ultimoHist = historial.length > 0 ? historial[historial.length - 1] : null;
-
-  let planSemana;
-  // Intentamos generar hasta 10 veces un menú diferente al anterior (minimizando repeticiones)
-  for (let intento = 0; intento < 10; intento++) {
-    planSemana = [];
-    const usados = new Set();
-
-    for (let i = 0; i < 7; i++) {
-      const nombreDia = diasSemana[i];
-      const tipoDeseado = prefsEnTiempoReal[nombreDia];
-      let platoAsignado = "—";
-      const arrTipo = platosPorTipo[tipoDeseado] || [];
-
-      // Buscamos un plato que no se usó esta semana ni la anterior en el mismo día
-      for (let j = 0; j < arrTipo.length; j++) {
-        const candidato = arrTipo[j].nombre;
-        const repetidoEnSemanaPasada = ultimoHist
-          ? ultimoHist[i].plato === candidato
-          : false;
-        if (!usados.has(candidato) && !repetidoEnSemanaPasada) {
-          platoAsignado = candidato;
-          usados.add(candidato);
-          break;
-        }
-      }
-
-      // Si no encontramos ninguno diferente, tomamos el primero disponible
-      if (platoAsignado === "—" && arrTipo.length > 0) {
-        platoAsignado = arrTipo[0].nombre;
-        usados.add(platoAsignado);
-      }
-
-      planSemana.push({ diaNombre: nombreDia, plato: platoAsignado });
-    }
-
-    // Si no había historial o si el nuevo menú difiere del anterior, salimos del bucle
-    if (!ultimoHist || !menusIguales(planSemana, ultimoHist)) {
-      break;
-    }
-  }
-
-  // Guardamos en historial
-  historial.push(planSemana);
   localStorage.setItem(LS_HIST_KEY, JSON.stringify(historial));
-
-  // Renderizamos el nuevo menú y el historial actualizado
-  setTimeout(() => {
-    renderizarTablaMenu(planSemana);
-    renderizarHistorial();
-    if (spinner) spinner.classList.add("oculto");
-  }, 300);
+  localStorage.setItem(LS_REC_KEY, JSON.stringify(recetas));
 }
 
-function menusIguales(menuA, menuB) {
-  // Compara dos arrays [{diaNombre, plato}, ...] y devuelve true si todos los platos coinciden en el mismo índice
-  if (!menuA || !menuB || menuA.length !== menuB.length) return false;
-  for (let i = 0; i < menuA.length; i++) {
-    if (menuA[i].plato !== menuB[i].plato) return false;
+// ================================
+// Renderizado General
+// ================================
+function renderAll() {
+  renderCategorias();
+  renderPlatos();
+  renderPreferencias();
+  renderRecetas();
+  renderHistorial();
+  clearMenu();
+}
+
+// ================================
+// Categorías
+// ================================
+function renderCategorias() {
+  const ul = document.getElementById("lista-categorias"); ul.innerHTML = '';
+  const select = document.getElementById("select-categoria-plato"); select.innerHTML = '<option value="">— Elige…</option>';
+  categorias.forEach((cat,i)=>{
+    const li = document.createElement('li');
+    li.innerHTML = `<span>${cat}</span> <button aria-label="Eliminar categoría ${cat}">✕</button>`;
+    li.querySelector('button').onclick = ()=>{ categorias.splice(i,1); saveData(); renderAll(); };
+    ul.appendChild(li);
+    const opt = document.createElement('option'); opt.value = cat; opt.textContent = cat;
+    select.appendChild(opt);
+  });
+}
+function addCategoria(e) {
+  e.preventDefault();
+  const val = e.target['input-nueva-categoria'].value.trim();
+  if (val && !categorias.includes(val)) {
+    categorias.push(val);
+    saveData(); renderAll();
   }
-  return true;
-}
-
-function renderizarTablaMenu(planSemana) {
-  const seccion = document.getElementById("seccion-resultado");
-  const tbody = document.querySelector("#tabla-menu tbody");
-  tbody.innerHTML = "";
-
-  planSemana.forEach(item => {
-    const tr = document.createElement("tr");
-    const tdDia = document.createElement("td");
-    tdDia.setAttribute("data-label", "Día");
-    tdDia.textContent = capitalize(item.diaNombre);
-
-    const tdPlato = document.createElement("td");
-    tdPlato.setAttribute("data-label", "Plato");
-    tdPlato.textContent = item.plato;
-
-    tr.appendChild(tdDia);
-    tr.appendChild(tdPlato);
-    tbody.appendChild(tr);
-  });
-
-  seccion.classList.remove("oculto");
-  seccion.scrollIntoView({ behavior: "smooth" });
+  e.target.reset();
 }
 
 // ================================
-//  FUNCIONES DE RECETAS
+// Platos
 // ================================
-function renderizarRecetas() {
-  const cont = document.getElementById("lista-recetas");
-  cont.innerHTML = "";
-
-  // Creamos selector de recetas
-  const selectRec = document.createElement("select");
-  selectRec.id = "select-receta";
-  selectRec.innerHTML = `<option value="">— Selecciona receta —</option>`;
-  RECETAS_PRE.forEach((rec, idx) => {
-    const option = document.createElement("option");
-    option.value = idx;
-    option.textContent = rec.nombre;
-    selectRec.appendChild(option);
+function renderPlatos() {
+  const ul=document.getElementById("lista-platos"); ul.innerHTML='';
+  platos.forEach((p,i)=>{
+    const li=document.createElement('li');
+    li.innerHTML = `<span>${p.nombre} <em>(${p.tipo})</em></span> <button aria-label="Eliminar plato ${p.nombre}">✕</button>`;
+    li.querySelector('button').onclick = ()=>{ platos.splice(i,1); saveData(); renderAll(); };
+    ul.appendChild(li);
   });
-  cont.appendChild(selectRec);
+}
+function addPlato(e) {
+  e.preventDefault();
+  const nom = e.target['input-nombre-plato'].value.trim();
+  const tip = e.target['select-categoria-plato'].value;
+  if (nom && tip) {
+    platos.push({ nombre: nom, tipo: tip });
+    saveData(); renderAll();
+  }
+  e.target.reset();
+}
 
-  // Contenedor para detalles
-  const detalles = document.createElement("div");
-  detalles.id = "detalle-receta";
-  detalles.style.marginTop = "1rem";
-  cont.appendChild(detalles);
-
-  // Listener para mostrar detalles al cambiar
-  selectRec.addEventListener("change", () => {
-    const idx = selectRec.value;
-    if (idx === "") {
-      detalles.innerHTML = "";
-      return;
-    }
-    const receta = RECETAS_PRE[idx];
-    let html = `<h3>${receta.nombre}</h3><h4>Ingredientes:</h4><ul>`;
-    receta.ingredientes.forEach(ing => {
-      html += `<li>${ing}</li>`;
+// ================================
+// Preferencias
+// ================================
+function renderPreferencias() {
+  const f = document.getElementById('form-preferencias'); f.innerHTML = '';
+  ['lunes','martes','miércoles','jueves','viernes','sábado','domingo'].forEach(d=>{
+    const div = document.createElement('div');
+    div.className = 'bloque-dia';
+    const lbl = document.createElement('label'); lbl.textContent = capitalize(d);
+    const sel = document.createElement('select'); sel.id = `pref-${d}`;
+    sel.innerHTML = '<option value="">— Elige categoría —</option>';
+    categorias.forEach(c=>{
+      const o = document.createElement('option'); o.value=c; o.textContent=c;
+      if (preferencias[d]===c) o.selected=true;
+      sel.appendChild(o);
     });
-    html += `</ul><h4>Pasos:</h4><ol>`;
-    receta.pasos.forEach(paso => {
-      html += `<li>${paso}</li>`;
+    div.append(lbl, sel); f.appendChild(div);
+  });
+}
+function savePreferencias() {
+  ['lunes','martes','miércoles','jueves','viernes','sábado','domingo'].forEach(d=>{
+    preferencias[d] = document.getElementById(`pref-${d}`).value;
+  });
+  saveData();
+  alert('Preferencias guardadas.');
+}
+
+// ================================
+// Generar Menú Semanal
+// ================================
+function generateMenu() {
+  const spinner = document.getElementById('spinner'); if (spinner) spinner.classList.remove('oculto');
+  const dias = ['lunes','martes','miércoles','jueves','viernes','sábado','domingo'];
+  const byTipo = {};
+  categorias.forEach(cat=> byTipo[cat] = platos.filter(p=>p.tipo===cat));
+  const plan = dias.map(d=>{
+    const tipo = preferencias[d];
+    const arr = byTipo[tipo] || [];
+    return { d: d, t: arr.length ? arr[Math.floor(Math.random()*arr.length)].nombre : '—', cat: tipo };
+  });
+  historial.push({ fecha: new Date().toLocaleDateString(), plan });
+  saveData();
+  setTimeout(()=>{ renderMenu(plan); renderHistorial(); if(spinner) spinner.classList.add('oculto'); }, 300);
+}
+function renderMenu(plan) {
+  const sec = document.getElementById('seccion-resultado'); sec.classList.remove('oculto');
+  const tb = document.querySelector('#tabla-menu tbody'); tb.innerHTML = '';
+  plan.forEach(item=>{
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${capitalize(item.d)}</td>
+      <td>${item.t}</td>
+      <td><span class="chip ${item.cat.toLowerCase()}">${capitalize(item.cat)}</span></td>
+    `;
+    tb.appendChild(tr);
+  });
+}
+function clearMenu() {
+  document.getElementById('seccion-resultado').classList.add('oculto');
+  document.querySelector('#tabla-menu tbody').innerHTML = '';
+}
+
+// ================================
+// Historial
+// ================================
+function renderHistorial() {
+  const div = document.getElementById('historial-menus'); div.innerHTML = '';
+  if (!historial.length) return;
+  historial.slice().reverse().forEach(h=>{
+    const det = document.createElement('details');
+    const summary = document.createElement('summary'); summary.textContent = h.fecha;
+    const ul = document.createElement('ul');
+    h.plan.forEach(x=>{
+      const li = document.createElement('li'); li.textContent = `${capitalize(x.d)}: ${x.t}`;
+      ul.appendChild(li);
     });
-    html += `</ol>`;
-    detalles.innerHTML = html;
-    detalles.scrollIntoView({ behavior: "smooth" });
+    det.append(summary, ul);
+    div.appendChild(det);
+  });
+  document.getElementById('seccion-historial').classList.remove('oculto');
+}
+
+// ================================
+// Recetas
+// ================================
+function renderRecetas() {
+  const div = document.getElementById('lista-recetas'); div.innerHTML='';
+  recetas.forEach(r=>{
+    const c = document.createElement('div'); c.className='rec-card';
+    c.innerHTML = `
+      <h3>${r.nombre}</h3>
+      <h4>Ingredientes:</h4><ul>${r.ingredientes.map(i=>`<li>${i}</li>`).join('')}</ul>
+      <h4>Pasos:</h4><ol>${r.pasos.map(p=>`<li>${p}</li>`).join('')}</ol>
+    `;
+    div.appendChild(c);
   });
 }
 
 // ================================
-//  FUNCIONES DE HISTORIAL
+// Helpers
 // ================================
-function renderizarHistorial() {
-  const cont = document.getElementById("historial-menus");
-  cont.innerHTML = "";
-
-  if (historial.length === 0) {
-    cont.innerHTML = "<p class=\"texto-muted\">Aún no hay menús generados.</p>";
-    return;
-  }
-
-  // Recorremos el historial (del más reciente al más antiguo)
-  historial.slice().reverse().forEach((menuSemana, idxRev) => {
-    // idxRev = 0 es el más reciente; índice real en el array es historial.length-1 - idxRev
-    const indexReal = historial.length - 1 - idxRev;
-    const fecha = new Date().toLocaleDateString(); // Podrías guardar fechas explícitas si quisieras
-
-    const divCard = document.createElement("div");
-    divCard.classList.add("receta-card");
-
-    let html = `<h3>Menú #${indexReal + 1} (generado)</h3><table>`;
-    html += "<thead><tr><th>Día</th><th>Plato</th></tr></thead><tbody>";
-    menuSemana.forEach(item => {
-      html += `<tr><td>${capitalize(item.diaNombre)}</td><td>${item.plato}</td></tr>`;
-    });
-    html += "</tbody></table>";
-
-    divCard.innerHTML = html;
-    cont.appendChild(divCard);
-  });
-
-  document.getElementById("seccion-historial").classList.remove("oculto");
+function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+function toggleTheme() {
+  const link = document.getElementById('theme-style');
+  const next = link.href.includes('dark') ? 'styles.css' : 'styles-dark.css';
+  link.href = next;
+  localStorage.setItem('tema', next);
 }
-
-// ================================
-//      FUNCIONES AUXILIARES
-// ================================
-function shuffleArray(arr) {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-}
-
-function capitalize(str) {
-  if (!str) return "";
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-// ================================
-//    MODO OSCURO / CLARO
-// ================================
-function toggleModoOscuro() {
-  const link = document.getElementById("theme-style");
-  const temaActual = link.getAttribute("href");
-  const nuevoTema = temaActual === "styles.css" ? "styles-light.css" : "styles.css";
-  link.setAttribute("href", nuevoTema);
-  localStorage.setItem("tema", nuevoTema);
-}
-
-function configurarModo() {
-  const temaGuardado = localStorage.getItem("tema");
-  if (temaGuardado) {
-    const link = document.getElementById("theme-style");
-    link.setAttribute("href", temaGuardado);
-  }
+function applyTheme() {
+  const tema = localStorage.getItem('tema');
+  if (tema) document.getElementById('theme-style').href = tema;
 }

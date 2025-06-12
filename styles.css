@@ -1,254 +1,150 @@
-/* ================================
-   Paleta inspirada en el logo ÑAM
-   ================================ */
 :root {
-  --bg-total: #fef6e4;         /* beige claro */
-  --bg-card: #fff3d9;         /* beige más saturado */
-  --text-principal: #5c3a1d;  /* marrón oscuro */
-  --text-sec: #a0522d;        /* marrón más suave */
-  --accent: #ffb347;          /* naranja suave */
-  --accent-hover: #ffa500;    /* naranja más fuerte */
-  --input-bg: #fff;           /* blanco */
-  --input-border: #e0c097;    /* beige grisáceo */
-  --btn-bg: #ffb347;
-  --btn-bg-hover: #ffa500;
-  --btn-text: #5c3a1d;
+  --fondo: #FAF3E0;
+  --marron: #5C4033;
+  --amarillo: #F4C542;
+  --naranja: #F4A261;
+  --blanco: #ffffff;
+  --sombra: rgba(0, 0, 0, 0.1);
 }
 
-/* ================================
-   Base
-   ================================ */
 * {
   box-sizing: border-box;
-  margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
 }
 
-html, body {
-  background-color: var(--bg-total);
-  color: var(--text-principal);
-  min-height: 100%;
+body {
+  background-color: var(--fondo);
+  color: var(--marron);
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
 }
 
-/* ================================
-   Header con logo
-   ================================ */
 header {
+  background-color: var(--amarillo);
   text-align: center;
-  padding: 1rem 0;
-  background-color: var(--bg-card);
-  border-bottom: 2px solid var(--input-border);
+  padding: 1rem;
+  box-shadow: 0 4px 8px var(--sombra);
 }
 
-header .logo {
+.logo {
   width: 80px;
-  height: auto;
-  display: block;
-  margin: 0 auto 0.5rem;
 }
 
-header h1 {
-  font-size: 1.8rem;
-  color: var(--text-principal);
+h1 {
+  font-size: 2rem;
+  margin-top: 0.5rem;
 }
 
-/* ================================
-   Main
-   ================================ */
 main {
-  max-width: 750px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+  padding: 1rem;
 }
 
-/* ================================
-   Cards
-   ================================ */
 .card {
-  background-color: var(--bg-card);
-  border: 1px solid var(--input-border);
+  background: var(--blanco);
   border-radius: 12px;
   padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 4px 10px rgba(92, 58, 29, 0.1);
-  transition: transform 0.2s ease;
+  margin: 2rem auto;
+  max-width: 900px;
+  box-shadow: 0 4px 8px var(--sombra);
 }
 
-.card:hover {
-  transform: translateY(-4px);
-}
-
-.card h2 {
+h2 {
+  color: var(--naranja);
+  border-bottom: 2px solid var(--amarillo);
   margin-bottom: 1rem;
-  color: var(--accent);
+  padding-bottom: 0.5rem;
 }
 
-/* ================================
-   Formularios
-   ================================ */
-.form-inline {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.form-inline input,
-.form-inline select {
-  background-color: var(--input-bg);
-  border: 1px solid var(--input-border);
-  border-radius: 6px;
-  color: var(--text-principal);
-  padding: 0.5rem;
-  flex: 1;
-  font-size: 1rem;
-}
-
-.form-inline button {
-  background-color: var(--btn-bg);
-  border: none;
-  border-radius: 6px;
-  color: var(--btn-text);
-  padding: 0.6rem 1.2rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  font-weight: bold;
-}
-
-.form-inline button:hover {
-  background-color: var(--btn-bg-hover);
-}
-
-/* ================================
-   Listas
-   ================================ */
-.lista {
-  list-style: none;
-  margin-top: 1rem;
-}
-
-.lista li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--input-bg);
-  border: 1px solid var(--input-border);
-  border-radius: 6px;
-  padding: 0.6rem 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.lista li:hover {
-  background-color: var(--accent);
-  color: var(--btn-text);
-}
-
-.lista li .texto-muted {
-  color: var(--text-sec);
-}
-
-.lista li button {
-  background: none;
-  border: none;
-  color: #d9534f;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.lista li button:hover {
-  color: #c9302c;
-}
-
-/* ================================
-   Preferencias Grid
-   ================================ */
-.grid-griddias {
+/* Recetas */
+.grid-recetas {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1rem;
 }
 
-.grid-griddias .bloque-dia label {
-  margin-bottom: 0.3rem;
-  font-size: 0.9rem;
-  color: var(--text-sec);
+.receta {
+  background: var(--fondo);
+  border: 1px solid var(--amarillo);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease;
 }
 
-.grid-griddias .bloque-dia select {
-  background-color: var(--input-bg);
-  border: 1px solid var(--input-border);
-  border-radius: 6px;
-  padding: 0.5rem;
+.receta:hover {
+  transform: scale(1.05);
 }
 
-/* ================================
-   Botón lleno
-   ================================ */
-.btn-lleno {
-  background-color: var(--btn-bg);
-  color: var(--btn-text);
-  border: none;
-  border-radius: 6px;
-  padding: 0.75rem 1.2rem;
+.categoria {
+  display: inline-block;
+  margin-top: 0.5rem;
+  background: var(--amarillo);
+  color: var(--marron);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+/* Historial */
+.lista-historial details {
+  background: var(--fondo);
+  padding: 1rem;
+  border: 1px solid var(--naranja);
+  border-radius: 8px;
+  margin-bottom: 1rem;
   cursor: pointer;
-  transition: background-color 0.2s ease;
-  width: 100%;
-  margin-top: 1rem;
+}
+
+.lista-historial summary {
   font-weight: bold;
+  color: var(--marron);
 }
 
-.btn-lleno:hover {
-  background-color: var(--btn-bg-hover);
+.lista-historial ul {
+  margin-top: 0.5rem;
+  list-style: disc inside;
 }
 
-/* ================================
-   Tabla menú semanal
-   ================================ */
-#tabla-menu {
+/* Menú semanal */
+.tabla-calendario {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1rem;
 }
 
-#tabla-menu th,
-#tabla-menu td {
-  border: 1px solid var(--input-border);
-  padding: 0.6rem;
-  text-align: left;
+.tabla-calendario th,
+.tabla-calendario td {
+  border: 1px solid var(--amarillo);
+  padding: 0.8rem;
+  text-align: center;
 }
 
-#tabla-menu th {
-  background-color: var(--accent);
-  color: #fff;
+.tabla-calendario th {
+  background: var(--amarillo);
+  color: var(--marron);
 }
 
-/* Responsive móvil tabla */
-@media (max-width: 600px) {
-  #tabla-menu, #tabla-menu thead, #tabla-menu tbody, #tabla-menu th, #tabla-menu td, #tabla-menu tr {
-    display: block;
-  }
-  #tabla-menu tr { margin-bottom: 1rem; }
-  #tabla-menu td {
-    padding-left: 50%;
-    position: relative;
-  }
-  #tabla-menu td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 0;
-    width: 45%;
-    padding-left: 0.5rem;
-    font-weight: bold;
-    color: var(--text-sec);
-  }
+.tabla-calendario td {
+  background: var(--fondo);
 }
 
-/* ================================
-   Footer
-   ================================ */
+.chip {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  color: var(--blanco);
+}
+
+.pasta { background: #F4A261; }
+.vegetales { background: #8BC34A; }
+.legumbres { background: #FF7043; }
+.carnes { background: #A1887F; }
+.sopas { background: #4DB6AC; }
+
 footer {
   text-align: center;
-  padding: 1rem 0;
-  color: var(--text-sec);
+  padding: 1rem;
+  color: var(--marron);
   font-size: 0.9rem;
 }
