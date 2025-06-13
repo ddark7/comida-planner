@@ -19,8 +19,7 @@ a, button { cursor: pointer; }
 
 header {
   text-align: center;
-  padding: 1rem 0;
-  background-color: var(--bg-card);        /* color de header “de antes” */
+  padding: 1rem 0;     /* color de header “de antes” */
   border-bottom: 1px solid var(--input-border);
 }
 header .logo {
