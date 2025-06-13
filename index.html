@@ -2,112 +2,93 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ÑAM - Planificador Semanal de Menús</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Logo ÑAM" class="logo" />
-    <h1>ÑAM - Planificador Semanal</h1>
+    <img src="logo.png" alt="Logo ÑAM" class="logo"/>
+    <h1>Planificador Semanal ÑAM</h1>
   </header>
 
   <main>
-    <!-- Recetas Mejoradas -->
-    <section class="card">
-      <h2>Recetas Disponibles</h2>
-      <div class="grid-recetas">
-        <div class="receta">
-          <h3>Macarrones Boloñesa</h3>
-          <span class="categoria">Pasta</span>
-        </div>
-        <div class="receta">
-          <h3>Ensalada Mixta</h3>
-          <span class="categoria">Vegetales</span>
-        </div>
-        <div class="receta">
-          <h3>Lentejas Estofadas</h3>
-          <span class="categoria">Legumbres</span>
-        </div>
-        <div class="receta">
-          <h3>Tortilla de Patatas</h3>
-          <span class="categoria">Huevos</span>
-        </div>
-        <!-- Aquí puedes añadir más recetas -->
+    <!-- 1. Categorías -->
+    <section id="seccion-categorias" class="card">
+      <h2>Categorías de Platos</h2>
+      <form id="form-agregar-categoria" class="form-inline">
+        <input type="text" id="input-nueva-categoria" placeholder="Nueva categoría…" maxlength="20" required/>
+        <button type="submit" class="btn-lleno">Añadir</button>
+      </form>
+      <div id="chips-categorias" class="chips-container">
+        <!-- JS inyectará cada chip aquí -->
       </div>
     </section>
 
-    <!-- Historial de Menús Mejorado -->
-    <section class="card">
-      <h2>Historial de Menús</h2>
-      <div class="lista-historial">
-        <details>
-          <summary>Semana 1 (3 - 9 Junio)</summary>
-          <ul>
-            <li>Lunes: Macarrones Boloñesa</li>
-            <li>Martes: Ensalada Mixta</li>
-            <li>Miércoles: Lentejas Estofadas</li>
-            <li>Jueves: Pollo Asado</li>
-            <li>Viernes: Gazpacho</li>
-          </ul>
-        </details>
-        <details>
-          <summary>Semana 2 (10 - 16 Junio)</summary>
-          <ul>
-            <li>Lunes: Tortilla de Patatas</li>
-            <li>Martes: Arroz a la Cubana</li>
-            <li>Miércoles: Croquetas de Jamón</li>
-            <li>Jueves: Pescado al Horno</li>
-            <li>Viernes: Pizza Casera</li>
-          </ul>
-        </details>
+    <!-- 2. Platos -->
+    <section id="seccion-platos" class="card">
+      <h2>Platos Personalizados</h2>
+      <form id="form-agregar-plato" class="form-inline">
+        <input type="text" id="input-nombre-plato" list="platos-base" placeholder="Nombre del plato…" maxlength="30" required/>
+        <datalist id="platos-base"></datalist>
+        <input type="text" id="input-tipo-plato" placeholder="Categoría del plato…" list="categorias-base" required/>
+        <datalist id="categorias-base"></datalist>
+        <button type="submit" class="btn-lleno">Añadir</button>
+      </form>
+      <div id="chips-platos" class="chips-container">
+        <!-- JS inyectará chips de platos aquí -->
       </div>
     </section>
 
-    <!-- Menú Semanal Mejorado -->
-    <section class="card">
-      <h2>Menú Semanal Actual</h2>
-      <table class="tabla-calendario">
+    <!-- 3. Preferencias Semanales -->
+    <section id="seccion-preferencias" class="card">
+      <h2>Preferencias Semanales</h2>
+      <div class="grid-griddias">
+        <!-- Para cada día creamos un bloque con chips de categorías -->
+        <template id="template-dia">
+          <div class="bloque-dia">
+            <div class="dia-label"></div>
+            <div class="chips-container dia-chips"></div>
+          </div>
+        </template>
+      </div>
+      <button id="btn-guardar-preferencias" class="btn-lleno">Guardar Preferencias</button>
+    </section>
+
+    <!-- 4. Generar Menú -->
+    <section id="seccion-generar" class="card">
+      <h2>Generar Menú Semanal</h2>
+      <button id="btn-generar-menu" class="btn-lleno">Generar</button>
+    </section>
+
+    <!-- 5. Resultado -->
+    <section id="seccion-resultado" class="card oculto">
+      <h2>Menú Semanal</h2>
+      <table id="tabla-menu">
         <thead>
-          <tr>
-            <th>Día</th>
-            <th>Plato</th>
-            <th>Categoría</th>
-          </tr>
+          <tr><th>Día</th><th>Plato</th><th>Categoría</th></tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>Lunes</td>
-            <td>Macarrones Boloñesa</td>
-            <td><span class="chip pasta">Pasta</span></td>
-          </tr>
-          <tr>
-            <td>Martes</td>
-            <td>Ensalada Mixta</td>
-            <td><span class="chip vegetales">Vegetales</span></td>
-          </tr>
-          <tr>
-            <td>Miércoles</td>
-            <td>Lentejas Estofadas</td>
-            <td><span class="chip legumbres">Legumbres</span></td>
-          </tr>
-          <tr>
-            <td>Jueves</td>
-            <td>Pollo Asado</td>
-            <td><span class="chip carnes">Carnes</span></td>
-          </tr>
-          <tr>
-            <td>Viernes</td>
-            <td>Gazpacho</td>
-            <td><span class="chip sopas">Sopas</span></td>
-          </tr>
-        </tbody>
+        <tbody></tbody>
       </table>
+    </section>
+
+    <!-- 6. Recetas -->
+    <section id="seccion-recetas" class="card">
+      <h2>Recetas Disponibles</h2>
+      <div id="lista-recetas" class="grid-recetas"></div>
+    </section>
+
+    <!-- 7. Historial -->
+    <section id="seccion-historial" class="card oculto">
+      <h2>Historial de Menús</h2>
+      <div id="historial-menus" class="lista-historial"></div>
     </section>
   </main>
 
   <footer>
-    © 2025 ÑAM - Planificador Semanal. Todos los derechos reservados.
+    <small>© 2025 ÑAM - Planificador Semanal. Uso personal.</small>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

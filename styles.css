@@ -4,147 +4,182 @@
   --amarillo: #F4C542;
   --naranja: #F4A261;
   --blanco: #ffffff;
-  --sombra: rgba(0, 0, 0, 0.1);
+  --input-border: #E0C097;
+  --sombra: rgba(0,0,0,0.1);
+
+  --bg-card: #fff;
+  --text-principal: #5C4033;
+  --accent: #F4A261;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-body {
-  background-color: var(--fondo);
-  color: var(--marron);
-  font-family: 'Segoe UI', sans-serif;
-  line-height: 1.6;
-}
+/* Base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--fondo); color: var(--marron); font-family:'Segoe UI',sans-serif; }
+a, button { cursor: pointer; }
 
 header {
-  background-color: var(--amarillo);
   text-align: center;
-  padding: 1rem;
-  box-shadow: 0 4px 8px var(--sombra);
+  padding: 1rem 0;
+  background-color: var(--bg-card);        /* color de header “de antes” */
+  border-bottom: 1px solid var(--input-border);
 }
-
-.logo {
+header .logo {
+  display: block;
+  margin: 0 auto 0.5rem;
   width: 80px;
 }
 
-h1 {
-  font-size: 2rem;
-  margin-top: 0.5rem;
+header h1 {
+  font-size: 1.8rem;
+  margin: 0;
+  color: var(--text-principal);
 }
 
-main {
-  padding: 1rem;
-}
-
+/* Main & Cards */
+main { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
 .card {
-  background: var(--blanco);
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin: 2rem auto;
-  max-width: 900px;
-  box-shadow: 0 4px 8px var(--sombra);
+  background: var(--blanco); border:1px solid var(--input-border);
+  border-radius:12px; padding:1.5rem; margin-bottom:1.5rem;
+  box-shadow:0 4px 8px var(--sombra); transition:transform .2s;
 }
-
-h2 {
+.card:hover { transform:translateY(-4px); }
+.card h2 {
   color: var(--naranja);
-  border-bottom: 2px solid var(--amarillo);
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
+  border-bottom:2px solid var(--amarillo);
+  padding-bottom:.5rem; margin-bottom:1rem;
 }
 
-/* Recetas */
-.grid-recetas {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
+/* Formularios Inline */
+.form-inline { display:flex; gap:.75rem; flex-wrap:wrap; }
+.form-inline input {
+  background:var(--blanco); border:1px solid var(--input-border);
+  border-radius:6px; padding:.5rem; flex:1; font-size:1rem;
 }
-
-.receta {
-  background: var(--fondo);
-  border: 1px solid var(--amarillo);
-  border-radius: 8px;
-  padding: 1rem;
-  text-align: center;
-  transition: transform 0.3s ease;
+.form-inline button {
+  background:var(--naranja); color:var(--blanco);
+  border:none; border-radius:6px; padding:.6rem 1.2rem;
+  font-weight:bold; transition:background .2s;
 }
+.form-inline button:hover { background:#ec9b4c; }
 
-.receta:hover {
-  transform: scale(1.05);
+/* Botón Lleno */
+.btn-lleno {
+  background:var(--naranja); color:var(--blanco);
+  border:none; border-radius:6px; padding:.75rem;
+  width:100%; margin-top:1rem; font-weight:bold;
+  transition:background .2s;
 }
+.btn-lleno:hover { background:#ec9b4c; }
 
-.categoria {
-  display: inline-block;
-  margin-top: 0.5rem;
-  background: var(--amarillo);
-  color: var(--marron);
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.8rem;
+/* Chips Container */
+.chips-container {
+  display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1rem;
 }
-
-/* Historial */
-.lista-historial details {
-  background: var(--fondo);
-  padding: 1rem;
-  border: 1px solid var(--naranja);
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  cursor: pointer;
-}
-
-.lista-historial summary {
-  font-weight: bold;
-  color: var(--marron);
-}
-
-.lista-historial ul {
-  margin-top: 0.5rem;
-  list-style: disc inside;
-}
-
-/* Menú semanal */
-.tabla-calendario {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.tabla-calendario th,
-.tabla-calendario td {
-  border: 1px solid var(--amarillo);
-  padding: 0.8rem;
-  text-align: center;
-}
-
-.tabla-calendario th {
-  background: var(--amarillo);
-  color: var(--marron);
-}
-
-.tabla-calendario td {
-  background: var(--fondo);
-}
-
 .chip {
-  display: inline-block;
-  padding: 0.2rem 0.6rem;
-  border-radius: 16px;
-  font-size: 0.8rem;
-  color: var(--blanco);
+  display:inline-block; padding:.4rem .8rem;
+  background:var(--amarillo); color:var(--marron);
+  border-radius:16px; font-size:.9rem;
+  transition:background .2s, transform .1s;
+}
+.chip.selected { background:var(--naranja); color:var(--blanco); }
+.chip:hover { transform:scale(1.05); }
+
+/* Grid de Días para preferencias */
+.grid-griddias {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.pasta { background: #F4A261; }
-.vegetales { background: #8BC34A; }
-.legumbres { background: #FF7043; }
-.carnes { background: #A1887F; }
-.sopas { background: #4DB6AC; }
+.bloque-dia {
+  background: var(--blanco);
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px var(--sombra);
+}
 
-footer {
+.bloque-dia .dia-label {
+  background: var(--naranja);
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
   text-align: center;
-  padding: 1rem;
+  text-transform: capitalize;
+}
+
+.bloque-dia .selects-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 8px;
+}
+
+.bloque-dia.expandido .selects-container {
+  max-height: 200px; /* Ajustable según contenido real */
+  padding: 8px;
+}
+
+.selects-container select {
+  width: 100%;
+  margin: 6px 0;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--input-border);
+  font-size: 1rem;
+  background: var(--blanco);
   color: var(--marron);
-  font-size: 0.9rem;
+}
+
+/* Tabla Menú Semanal */
+#tabla-menu {
+  width:100%; border-collapse:collapse; margin-top:1rem;
+}
+#tabla-menu th, #tabla-menu td {
+  border:1px solid var(--input-border); padding:.8rem; text-align:center;
+}
+#tabla-menu th { background:var(--amarillo); color:var(--marron); }
+
+/* Grid de Recetas */
+.grid-recetas {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:1rem; margin-top:1rem;
+}
+.receta-card {
+  background:var(--fondo); border:1px solid var(--input-border);
+  border-radius:8px; padding:1rem; box-shadow:0 4px 8px var(--sombra);
+  transition:transform .2s;
+}
+.receta-card:hover { transform:translateY(-4px); }
+.receta-card h3 { margin-bottom:.5rem; }
+.btn-detalle {
+  background:var(--amarillo); border:none; padding:.4rem .8rem;
+  border-radius:6px; font-size:.9rem; margin-bottom:.5rem;
+  transition:background .2s;
+}
+.btn-detalle:hover { background:#ec9b4c; }
+.detalle-receta { display:none; margin-top:.5rem; }
+.detalle-receta:not(.oculto) { display:block; }
+
+/* Historial Accordion */
+.lista-historial details {
+  background:var(--blanco); border:1px solid var(--input-border);
+  border-radius:6px; padding:.5rem 1rem; margin-bottom:.75rem;
+}
+.lista-historial summary {
+  font-weight:bold; cursor:pointer;
+}
+.lista-historial ul {
+  margin-top:.5rem; list-style:disc inside;
+}
+
+/* Oculto */
+.oculto { display:none; }
+
+/* Responsive */
+@media (max-width:600px) {
+  .form-inline { flex-direction:column; }
+  header h1 { font-size:1.5rem; }
 }
