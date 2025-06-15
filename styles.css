@@ -108,29 +108,71 @@ main { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
   text-align: center;
   text-transform: capitalize;
 }
-
-.bloque-dia .selects-container {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
-  padding: 0 8px;
-}
-
-.bloque-dia.expandido .selects-container {
-  max-height: 200px; /* Ajustable según contenido real */
-  padding: 8px;
-}
-
-.selects-container select {
+/* — Select-wrapper moderno — */
+.select-wrapper {
+  position: relative;
   width: 100%;
-  margin: 6px 0;
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid var(--input-border);
+  margin: 8px 0;
+}
+.select-wrapper select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  padding: 0.75rem 3rem 0.75rem 1rem;
   font-size: 1rem;
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
   background: var(--blanco);
   color: var(--marron);
+  transition: border-color .2s, box-shadow .2s;
 }
+.select-wrapper select:hover {
+  border-color: var(--amarillo);
+}
+.select-wrapper select:focus {
+  outline: none;
+  border-color: var(--naranja);
+  box-shadow: 0 0 0 3px rgba(244,162,97,0.2);
+}
+.select-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  border-left: 6px solid transparent;
+  border-right:6px solid transparent;
+  border-top: 8px solid var(--marron);
+  transform: translateY(-50%);
+}
+/* —— Toggle Group —— */
+.toggle-group {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+.toggle-group .toggle {
+  flex: 1;
+  padding: 0.6rem 0;
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  background: var(--blanco);
+  color: var(--marron);
+  font-weight: bold;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.toggle-group .toggle.active {
+  background: var(--naranja);
+  color: var(--blanco);
+  border-color: var(--naranja);
+}
+.toggle-group .toggle:hover {
+  border-color: var(--amarillo);
+}
+
 
 /* Tabla Menú Semanal */
 #tabla-menu {
@@ -181,4 +223,52 @@ main { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
 @media (max-width:600px) {
   .form-inline { flex-direction:column; }
   header h1 { font-size:1.5rem; }
+}
+/* Lista de Platos */
+#lista-platos {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+#lista-platos li {
+  background: var(--amarillo);
+  color: var(--marron);
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#lista-platos li button {
+  background: transparent;
+  border: none;
+  color: var(--marron);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+/* Combinaciones */
+.lista-combos {
+  list-style: none;
+  padding: 0;
+  margin-top: .75rem;
+}
+.lista-combos li {
+  background: var(--amarillo);
+  color: var(--marron);
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Contenedor de recetas */
+.recetas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  padding: 10px 0;
 }

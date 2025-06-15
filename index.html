@@ -27,18 +27,44 @@
 
     <!-- 2. Platos -->
     <section id="seccion-platos" class="card">
-      <h2>Platos Personalizados</h2>
-      <form id="form-agregar-plato" class="form-inline">
-        <input type="text" id="input-nombre-plato" list="platos-base" placeholder="Nombre del plato…" maxlength="30" required/>
-        <datalist id="platos-base"></datalist>
-        <input type="text" id="input-tipo-plato" placeholder="Categoría del plato…" list="categorias-base" required/>
-        <datalist id="categorias-base"></datalist>
-        <button type="submit" class="btn-lleno">Añadir</button>
-      </form>
-      <div id="chips-platos" class="chips-container">
-        <!-- JS inyectará chips de platos aquí -->
-      </div>
-    </section>
+  <h2>Platos Personalizados</h2>
+  <form id="form-agregar-plato" class="form-inline">
+    <input type="text" id="input-nombre-plato" placeholder="Nombre del plato…" maxlength="30" required/>
+   <div class="select-wrapper">
+    <div class="toggle-group" id="toggle-tipo-plato">
+  <button type="button" data-value="primero" class="toggle active">Primero</button>
+  <button type="button" data-value="segundo" class="toggle">Segundo</button>
+  <!-- Campo oculto que tu JS seguirá leyendo -->
+  <input type="hidden" id="select-tipo-plato" required>
+</div>
+
+   </div>
+    <!-- Mantén el datalist de categoría -->
+    <input type="text" id="input-categoria-plato" placeholder="Categoría…" list="categorias-base" required/>
+    <datalist id="categorias-base"></datalist>
+    <button type="submit" class="btn-lleno">Añadir Plato</button>
+  </form>
+  <ul id="lista-platos" class="chips-container">
+    <!-- JS inyectará cada plato como elemento de lista aquí -->
+  </ul>
+</section>
+
+<section id="seccion-combos" class="card">
+  <h2>Combinaciones Válidas</h2>
+  <div class="select-wrapper">
+    <select id="comboPrimero">
+      <option value="">— Primero —</option>
+      <!-- JS llenará con categorías -->
+    </select>
+    <select id="comboSegundo">
+      <option value="">— Segundo —</option>
+      <!-- JS llenará con categorías -->
+    </select>
+    <button id="btn-agregar-combo" class="btn-lleno">Añadir Combo</button>
+  </div>
+  <ul id="lista-combos" class="lista-combos"></ul>
+</section>
+
 
     <!-- 3. Preferencias Semanales -->
     <section id="seccion-preferencias" class="card">
@@ -57,9 +83,14 @@
 
     <!-- 4. Generar Menú -->
     <section id="seccion-generar" class="card">
-      <h2>Generar Menú Semanal</h2>
-      <button id="btn-generar-menu" class="btn-lleno">Generar</button>
-    </section>
+  <h2>Generar Menú Semanal</h2>
+  <label>
+    <input type="checkbox" id="incluyeCena" checked>
+    Incluir cenas
+  </label>
+  <button id="btn-generar-menu" class="btn-lleno">Generar</button>
+</section>
+
 
     <!-- 5. Resultado -->
     <section id="seccion-resultado" class="card oculto">
@@ -74,9 +105,10 @@
 
     <!-- 6. Recetas -->
     <section id="seccion-recetas" class="card">
-      <h2>Recetas Disponibles</h2>
-      <div id="lista-recetas" class="grid-recetas"></div>
-    </section>
+  <h2>Recetas Disponibles</h2>
+  <div id="recetasContainer" class="recetas-grid"></div>
+</section>
+
 
     <!-- 7. Historial -->
     <section id="seccion-historial" class="card oculto">
